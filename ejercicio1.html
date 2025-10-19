@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tarea de JavaScript</title>
+<style>
+  body {
+    font-family: 'Times New Roman', Times, serif;
+  }
+  h2 {
+    color: rgb(0, 0, 0); 
+  }
+  #resultado {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: white;
+    width: 300px;
+  }
+</style>
+</head>
+<body>
+<h2>Tarea de JavaScript</h2>
+<div id="resultado"></div>
+<script>
+  // 1. Mostrar mensaje de bienvenida
+  alert("¡Bienvenido al programa!");
+  // 2. Pedir nombre
+  let nombre = prompt("¿Cuál es tu nombre?");
+  // 3. Pedir dos números
+  let num1 = parseFloat(prompt("Ingresa el primer número:"));
+  let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+  // 4. Calcular la suma
+  let suma = num1 + num2;
+  document.getElementById("resultado").innerHTML = `
+    <p>Bienvenido al programa</p>
+    <p>Hola, ${nombre}.</p>
+    <p>Números ingresados: ${num1} y ${num2}.</p>
+    <p>La suma es: ${suma}.</p>
+  `;
+</script>
+
+</body>
+</html>
