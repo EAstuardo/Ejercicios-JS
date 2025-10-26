@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Formulario de datos personales</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: lightgreen;
+  }
+
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+
+  }
+  input, select {
+    margin-bottom: 10px;
+  }
+  #resultado {
+    margin-top: 15px;
+    border-top: 1px solid #000;
+    padding-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Formulario de datos personales</h2>
+
+<label>Nombre:</label>
+<input type="text" id="nombre">
+
+<label>Edad:</label>
+<input type="number" id="edad">
+
+<label>Dirección:</label>
+<input type="text" id="direccion">
+
+<label>Teléfono:</label>
+<input type="text" id="telefono">
+
+<label>Color de fondo:</label>
+<select id="colorFondo" onchange="cambiarColores()">
+  <option value="">Seleccionar</option>
+  <option value="lightdark">Verde claro</option>
+  <option value="lightblue">Celeste</option>
+  <option value="lightyellow">Amarillo claro</option>
+  <option value="red">Rojo claro</option>
+  <option value="lightblack">Negro claro</option>
+  <option value="violet">Violeta</option>
+  <option value="pink">Rosado</option>
+  <option value="white">Blanco</option>
+</select>
+
+<label>Color del texto:</label>
+<select id="colorTexto" onchange="cambiarColores()">
+  <option value="">Seleccionar</option>
+  <option value="red">Rojo</option>
+  <option value="blue">Azul</option>
+  <option value="black">Negro</option>
+  <option value="white">Blanco</option>
+  <option value="yellow">Amarillo</option>
+  <option value="green">Verde</option>
+  <option value="pink">Rosado</option>
+  <option value="orange">Naranja</option>
+</select>
+
+<br>
+<button type="button" onclick="mostrarMensaje()">Mostrar mensaje</button>
+
+<div id="resultado"></div>
+
+<script>
+function cambiarColores() {
+  let colorFondo = document.getElementById('colorFondo').value;
+  let colorTexto = document.getElementById('colorTexto').value;
+
+  // Solo cambia los dos si ambos están seleccionados
+  if (colorFondo && colorTexto) {
+    document.body.style.backgroundColor = colorFondo;
+    document.body.style.color = colorTexto;
+  }
+}
+
+function mostrarMensaje() {
+  let nombre = document.getElementById('nombre').value;
+  let edad = parseInt(document.getElementById('edad').value);
+  let direccion = document.getElementById('direccion').value;
+  let telefono = document.getElementById('telefono').value;
+  let resultado = document.getElementById('resultado');
+
+  // Determinar mensaje de edad
+  let mensajeEdad = "";
+  if (!isNaN(edad)) {
+    if (edad >= 18) {
+      mensajeEdad = "es una persona mayor de edad.";
+    } else {
+      mensajeEdad = "eres una persona menor de edad.";
+    }
+  }
+
+  // Mostrar resultados
+  resultado.innerHTML = `
+    <p>Hola ${nombre || 'desconocido'}, eres una persona de ${edad || '?'} años.</p>
+    <p>${mensajeEdad}</p>
+    <p>Dirección: ${direccion || 'No especificada'}</p>
+    <p>Teléfono: ${telefono || 'No especificado'}</p>
+  `;
+}
+</script>
+
+</body>
+</html>
